@@ -15,3 +15,4 @@ $ chmod +x ./bash.sh
 
 * [docker commands](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)
 * [CI/CD from GitHub to AWS EC2 using GitHub action](https://farhan-tanvir.medium.com/ci-cd-from-github-to-aws-ec2-using-github-action-e18b621c0507)
+* [Install Maven](http://jmlim.github.io/etc/2019/07/11/aws-linux-maven-install/)
