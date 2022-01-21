@@ -14,6 +14,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Deploy
+        run: |
+          TEMP=$(mktemp)
+          echo "${{ secrets.AWS_PRIVATE_KEY }}" > $TEMP
+          ssh -o 'StrictHostKeyChecking no' -i $TEMP myuser@mysite.com 'bash -s' < scripts/deploy.sh
+
       - name: executing ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
