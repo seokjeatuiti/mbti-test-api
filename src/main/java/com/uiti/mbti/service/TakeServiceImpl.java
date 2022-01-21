@@ -45,7 +45,7 @@ public class TakeServiceImpl implements TakeService {
     public Answer addAnswer(Integer takeId, AnswerCreationRequest answer) {
         Optional<Take> optionalTake = takeRepository.findById(takeId);
         if (!optionalTake.isPresent()) {
-            throw new TakeNotFoundException("Take not found by : " + takeId);
+            throw new TakeNotFoundException("Take not found by  : " + takeId);
         }
 
         Take take = optionalTake.get();
