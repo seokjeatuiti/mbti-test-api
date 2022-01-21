@@ -2,7 +2,7 @@
 
 function trap_ctrlc() {
 	echo "Shutting down docker."
-	sudo docker-compose down -v
+	sudo docker-compose down
 	echo "Stopped bash opeation."
 	exit 2
 }
