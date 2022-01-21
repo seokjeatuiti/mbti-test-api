@@ -12,4 +12,6 @@ $ chmod +x ./bash.sh
 
 
 ### References
-[docker commands](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)
+
+* [docker commands](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)
+* [CI/CD from GitHub to AWS EC2 using GitHub action](https://farhan-tanvir.medium.com/ci-cd-from-github-to-aws-ec2-using-github-action-e18b621c0507)
