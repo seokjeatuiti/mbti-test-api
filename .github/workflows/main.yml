@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
-            cd /mbti-test-api &&
+            cd mbti-test-api/ &&
             git checkout main &&
             git fetch --all &&
             git reset --hard origin/main &&
