@@ -14,18 +14,13 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy in EC2
-        env:
-          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-          HOST_NAME : ${{ secrets.HOST_NAME  }}
-          USER_NAME : ${{ secrets.USER_NAME  }}
-
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} '
-
-            #Now we have got the access of EC2 and we will start the deploy .
+      - name: executing ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_NAME}}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          script: |
             cd /mbti-test-api &&
             git checkout main &&
             git fetch --all &&
@@ -33,7 +28,6 @@ jobs:
             git pull origin main &&
             chmod +x ./deploy.sh &&
             ./deploy.sh
-          '
 
       - name: Slack Notify
         uses: rtCamp/action-slack-notify@v2.2.0
