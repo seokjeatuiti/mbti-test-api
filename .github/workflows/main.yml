@@ -11,15 +11,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: webfactory/ssh-agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.AWS_PRIVATE_KEY }}
-
       - name: executing ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
