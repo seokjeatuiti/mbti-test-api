@@ -10,4 +10,5 @@ function trap_ctrlc() {
 trap "trap_ctrlc" 2
 
 mvn clean package -DskipTests &&
-docker-compose up -d --no-cache
+docker-compose build --no-cache
+docker-compose up -d
