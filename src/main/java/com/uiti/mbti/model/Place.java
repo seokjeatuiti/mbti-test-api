@@ -23,10 +23,10 @@ public class Place {
     @Column(nullable = false, length = 4)
     private String mbti;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "apt_id")
     private Long aptId;
 
-    private String desc;
+    private String notes;
 
     public void setId(Integer id) {
         this.id = id;
