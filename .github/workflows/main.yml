@@ -14,27 +14,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: webfactory/ssh-agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: executing ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_NAME}}
-          username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd mbti-test-api/
-            docker-compose down
-            git checkout main
-            git fetch --all
-            git reset --hard origin/main
-            git pull origin main
-            chmod +x ./deploy.sh
-            ./deploy.sh
-
 #      - name: Checkout
 #        uses: actions/checkout@v2
 #      - name: Install SSH key
@@ -46,13 +25,13 @@ jobs:
 #      - name: rsync over ssh
 #        run: ./deploy.sh
 
-#      - name: executing ssh commands using ssh key
-#        uses: appleboy/ssh-action@v0.1.4
-#        with:
-#          host: ${{ secrets.HOST_NAME}}
-#          username: ${{ secrets.USER_NAME }}
-#          key: ${{ secrets.KEY }}
-#          script: whoami
+      - name: executing ssh commands using ssh key
+        uses: appleboy/ssh-action@latest
+        with:
+          host: ${{ secrets.HOST_NAME}}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: whoami
 #          script: |
 #            cd mbti-test-api/
 #            docker-compose down
