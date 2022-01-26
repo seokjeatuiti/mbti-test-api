@@ -1,14 +1,10 @@
 #!/bin/bash
 
-function trap_ctrlc() {
-	echo "Shutting down docker."
-	sudo docker-compose down
-	echo "Stopped bash opeation."
-	exit 2
-}
-
-trap "trap_ctrlc" 2
-
-mvn clean package -DskipTests &&
+docker-compose down
+git checkout main
+git fetch --all
+git reset --hard origin/main
+git pull origin main
+mvn clean package -DskipTests
 docker-compose build --no-cache
 docker-compose up -d
