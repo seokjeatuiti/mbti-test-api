@@ -17,6 +17,7 @@ jobs:
       - name: executing ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
+          timeout: 180s
           host: ${{ secrets.HOST_NAME}}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
