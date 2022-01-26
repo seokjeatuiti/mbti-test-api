@@ -22,6 +22,7 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
             cd mbti-test-api/ &&
+            docker-compose down &&
             git checkout main &&
             git fetch --all &&
             git reset --hard origin/main &&

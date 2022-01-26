@@ -26,6 +26,8 @@ public class Place {
     @Column(nullable = false)
     private Long aptId;
 
+    private String desc;
+
     public void setId(Integer id) {
         this.id = id;
     }
