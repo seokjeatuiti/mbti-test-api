@@ -17,19 +17,19 @@ jobs:
       - name: executing ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
-          timeout: 180s
           host: ${{ secrets.HOST_NAME}}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          script: |
-            cd mbti-test-api/ &&
-            docker-compose down &&
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard origin/main &&
-            git pull origin main &&
-            chmod +x ./deploy.sh &&
-            ./deploy.sh
+          script: whoami
+#          script: |
+#            cd mbti-test-api/ &&
+#            docker-compose down &&
+#            git checkout main &&
+#            git fetch --all &&
+#            git reset --hard origin/main &&
+#            git pull origin main &&
+#            chmod +x ./deploy.sh &&
+#            ./deploy.sh
 
       - name: Slack Notify
         uses: rtCamp/action-slack-notify@v2.2.0
