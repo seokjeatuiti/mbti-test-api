@@ -19,7 +19,7 @@ jobs:
         with:
           command: |
             cd /tmp
-            ls -a
+            ls -al
             echo "env_var:$FIRST_NAME"
             exit 1
           host: ${{ secrets.HOST_NAME }}
