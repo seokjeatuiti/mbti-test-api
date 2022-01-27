@@ -11,7 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                         "http://quiz.ziphz.com.s3-website.ap-northeast-2.amazonaws.com",
-                        "http://localhost:3000"
+                        "http://localhost:3000",
+                        "http://quiz.ziphz.com",
+                        "https://quiz.ziphz.com"
                 )
                 .allowedMethods("*")
                 .allowedHeaders("*");
