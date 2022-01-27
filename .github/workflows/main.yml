@@ -25,7 +25,6 @@ jobs:
             User $SSH_USER
             PreferredAuthentications publickey
             IdentityFile ~/.ssh/staging.key
-            UseKeychain yes
             AddKeysToAgent yes
           END
         env:
