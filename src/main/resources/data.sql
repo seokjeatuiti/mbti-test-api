@@ -77,5 +77,22 @@ INSERT INTO `answer` (`answer`,`quiz_no`,`take_id`) VALUES('P',12,1);
 
 SET FOREIGN_KEY_CHECKS = 1; -- Enable foreign key checking.
 
+update `place` set `addr` = '서울시 강남구 압구정동', `price` = 375000, `pyeong` = '35평';
+update `place` set `addr` = '서울시 서초구 반포동', `price` = 375000, `pyeong` = '34평';
+update `place` set `addr` = '서울시 서초구 반포동', `price` = 372000, `pyeong` = '34평';
+update `place` set `addr` = '서울시 서초구 반포동', `price` = 363000, `pyeong` = '35평';
+update `place` set `addr` = '서울시 강남구 개포동', `price` = 279000, `pyeong` = '33평';
+update `place` set `addr` = '서울시 성동구 성수동', `price` = 330000, `pyeong` = '38평';
+update `place` set `addr` = '서울시 서초구 서초동', `price` = 350000, `pyeong` = '34평';
+update `place` set `addr` = '서울시 강남구 삼성동', `price` = 549000, `pyeong` = '59평';
+update `place` set `addr` = '서울시 마포구 아현동', `price` = 198000, `pyeong` = '34평';
+update `place` set `addr` = '서울시 용산구 한남동', `price` = 270000, `pyeong` = '26평';
+update `place` set `addr` = '서울시 강남구 도곡동', `price` = 394000, `pyeong` = '55평';
+update `place` set `addr` = '서울시 송파구 가락동', `price` = 233000, `pyeong` = '33평';
+update `place` set `addr` = '서울시 양천구 목동', `price` = 320000, `pyeong` = '60평';
+update `place` set `addr` = '서울시 서초구 반포동', `price` = 416000, `pyeong` = '34평';
+update `place` set `addr` = '서울시 강남구 도곡동', `price` = 397000, `pyeong` = '43평';
+update `place` set `addr` = '서울시 강남구 대치동', `price` = 425000, `pyeong` = '54평';
+
 
 '

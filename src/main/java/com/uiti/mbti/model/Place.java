@@ -28,10 +28,10 @@ public class Place {
 
     private String notes;
 
+    private int price;
+    private String pyeong;
+
     public void setId(Integer id) {
         this.id = id;
     }
-
-//    @OneToOne(mappedBy = "place")
-//    private QuizResponse response;
 }
