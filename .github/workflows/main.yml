@@ -32,8 +32,17 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add ~/.ssh/github_actions
 
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            PreferredAuthentications publickey
+            IdentityFile ~/.ssh/github_actions
+            AddKeysToAgent yes
+          END
+
       - name: Build and deploy
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          whoami
+          ssg staging 'whoami'
