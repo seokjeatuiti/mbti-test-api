@@ -23,8 +23,10 @@ jobs:
           Host staging
             HostName $SSH_HOST
             User $SSH_USER
+            PreferredAuthentications publickey
             IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
+            UseKeychain yes
+            AddKeysToAgent yes
           END
         env:
           SSH_USER: ${{ secrets.USER_NAME }}
