@@ -14,6 +14,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: ls -a via OPEN SSH Private Key
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /tmp
+            ls -a
+            echo "env_var:$FIRST_NAME"
+            exit 1
+          host: ${{ secrets.HOST_NAME }}
+          user: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY}}
+          args: "-tt -vvv"
+
 #      - name: Checkout
 #        uses: actions/checkout@v2
 #      - name: Install SSH key
@@ -24,18 +37,14 @@ jobs:
 #          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 #      - name: rsync over ssh
 #        run: ./deploy.sh
-      - name: webfactory/ssh-agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: executing ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_NAME}}
-          username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: whoami
+#      - name: executing ssh commands using ssh key
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST_NAME}}
+#          username: ${{ secrets.USER_NAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          script: whoami
 #          script: |
 #            cd mbti-test-api/
 #            docker-compose down
@@ -46,7 +55,7 @@ jobs:
 #            chmod +x ./deploy.sh
 #            ./deploy.sh
 
-      - name: Slack Notify
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+#      - name: Slack Notify
+#        uses: rtCamp/action-slack-notify@v2.2.0
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
