@@ -23,7 +23,7 @@ jobs:
           SSH_HOST: ${{ secrets.HOST_NAME }}
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           echo "$SSH_KEY" > ~/.ssh/github_actions
           chmod 600 ~/.ssh/github_actions
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
@@ -33,9 +33,7 @@ jobs:
           Host staging
             HostName $SSH_HOST
             User $SSH_USER
-            PreferredAuthentications publickey
             IdentityFile ~/.ssh/github_actions
-            AddKeysToAgent yes
           END
 
       - name: Build and deploy
