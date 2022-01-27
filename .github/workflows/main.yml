@@ -14,18 +14,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: ls -a via OPEN SSH Private Key
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /tmp
-            ls -al
-            echo "env_var:$FIRST_NAME"
-            exit 1
-          host: ${{ secrets.HOST_NAME }}
-          user: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY}}
-          args: "-tt -vvv"
+#      - name: ls -a via OPEN SSH Private Key
+#        uses: fifsky/ssh-action@master
+#        with:
+#          command: |
+#            cd /tmp
+#            ls -al
+#            echo "env_var:$FIRST_NAME"
+#            exit 1
+#          host: ${{ secrets.HOST_NAME }}
+#          user: ${{ secrets.USER_NAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY}}
+#          args: "-tt -vvv"
 
 #      - name: Checkout
 #        uses: actions/checkout@v2
@@ -38,22 +38,21 @@ jobs:
 #      - name: rsync over ssh
 #        run: ./deploy.sh
 
-#      - name: executing ssh commands using ssh key
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.HOST_NAME}}
-#          username: ${{ secrets.USER_NAME }}
-#          key: ${{ secrets.SSH_PRIVATE_KEY }}
-#          script: whoami
-#          script: |
-#            cd mbti-test-api/
-#            docker-compose down
-#            git checkout main
-#            git fetch --all
-#            git reset --hard origin/main
-#            git pull origin main
-#            chmod +x ./deploy.sh
-#            ./deploy.sh
+      - name: executing ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_NAME}}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd mbti-test-api/
+            docker-compose down
+            git checkout main
+            git fetch --all
+            git reset --hard origin/main
+            git pull origin main
+            chmod +x ./deploy.sh
+            ./deploy.sh
 
 #      - name: Slack Notify
 #        uses: rtCamp/action-slack-notify@v2.2.0
