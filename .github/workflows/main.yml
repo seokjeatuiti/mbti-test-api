@@ -27,7 +27,6 @@ jobs:
           echo "$SSH_KEY" > ~/.ssh/github_actions
           chmod 600 ~/.ssh/github_actions
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-#          ssh-add ~/.ssh/github_actions
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
 
           cat >>~/.ssh/config <<END
