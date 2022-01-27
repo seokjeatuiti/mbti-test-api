@@ -23,10 +23,7 @@ jobs:
           SSH_HOST: ${{ secrets.HOST_NAME }}
         run: |
           mkdir -p ~/.ssh
-          # Replace example.com with the hostname of the machine
-          # you're SSH-ing into
-          ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-          # SSH_KEY is the name of the repository secret
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           echo "$SSH_KEY" > ~/.ssh/github_actions
           chmod 600 ~/.ssh/github_actions
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
