@@ -41,4 +41,4 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          ssh staging 'whoami'
+          ssh staging 'whoami' -vvv
